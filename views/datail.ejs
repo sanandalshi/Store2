@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DETAILS</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1faee;
+            margin: 0;
+            padding: 0;
+            color: #1d3557;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #1d3557;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .message {
+            background-color: #e63946;
+            color: #fff;
+            padding: 10px 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        form {
+            display: inline-block;
+        }
+
+        button {
+            background-color: #e63946;
+            color: #fff;
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #457b9d;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <% if (mess && mess.length > 0) { %>
+            <div class="message"><%= mess %></div>
+        <% } %>
+
+        <h1>NAME OF THE PRODUCT: <%= title %></h1>
+        <img src="<%= image %>" alt="Product Image">
+<% if (session){ %>
+        <form action="/delete" method="POST">
+            <input type="hidden" name="id" value="<%= id %>">
+            <button type="submit">DELETE</button>
+        </form>
+        <% } %>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+{
+    "env": {
+      "PORT": "8080",
+      "DB_HOST": "localhost",
+      "DB_PORT": "3306",
+      "DB_USER": "root",
+      "DB_PASSWORD": "Wj28@krhps",
+      "DB_DATABASE": "node-complete",
+      "SESSION_SECRET": "f4569d89189320862b20878ebaf0e660c8d409afd2a90acc3b5ed013f43af7774aeb03c4f0a4f2950ec8ede51605cd36e64a1e7e47f7789f91e566ab5e10627d",
+      "EMAIL_USER": "sanand.alshi@gmail.com",
+      "EMAIL_PASS": "dpba pvwk psue eelk",
+      "PAYPAL_MODE": "sandbox",
+      "PAYPAL_CLIENT_KEY": "AfJGBZNC7KDT9iK46PEXqARVygVj4fUnc1ZO0TxCDbvC1PnoP4MyBg-XglNCUc_W3EOO2fOR9byayZpf",
+      "PAYPAL_SECRET_KEY": "ELnKsOjCpmAQC4boGaHzP0AIneV4L5QkMwCbOD0OdysOTuTxFWOsjTxrWmVt9OIPSAJPe3Bx-VFeSJxH"
+    },
+    "ext": "js,json",
+    "ignore": ["node_modules"],
+    "watch": ["*.js", "routes/*.js", "models/*.js"],
+    "exec": "node app.js"
+  }
+  

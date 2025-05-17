@@ -1,0 +1,63 @@
+<!-- views/success.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body { padding-top: 50px; }
+        .success-container { max-width: 600px; margin: 0 auto; text-align: center; }
+        .success-icon { font-size: 80px; color: #28a745; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-container">
+            <div class="success-icon">✓</div>
+            <h1>Payment Successful!</h1>
+            <p class="lead"><%= message %></p>
+            
+            <div class="card mt-4">
+                <div class="card-header">
+                    Transaction Information
+                </div>
+                <div class="card-body">
+                    <p><strong>PayPal Transaction ID:</strong> <%= paymentId %></p>
+                </div>
+            </div>
+            
+            <div class="mt-4">
+                <a href="/home" class="btn btn-primary">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<!-- views/cancel.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body { padding-top: 50px; }
+        .cancel-container { max-width: 600px; margin: 0 auto; text-align: center; }
+        .cancel-icon { font-size: 80px; color: #dc3545; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cancel-container">
+            <div class="cancel-icon">✕</div>
+            <h1>Payment Cancelled</h1>
+            <p class="lead"><%= message %></p>
+            
+            <div class="mt-4">
+                <a href="/cartarray" class="btn btn-primary">Return to Cart</a>
+                <a href="/home" class="btn btn-secondary ml-2">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
