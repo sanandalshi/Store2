@@ -275,7 +275,7 @@ app.get('/cartarray', (req, res) => {
 
 app.post('/order', async (req, res) => {
   const orderId = crypto.randomBytes(20).toString('hex');
-  const total = parseFloat(req.body.total);
+
   const ans = Cart.arr.map((a) => ({
     id: a.id,
     title: a.title,
@@ -283,6 +283,13 @@ app.post('/order', async (req, res) => {
     quan: a.quan,
     price: a.price,
   }));
+
+  // ✅ Calculate total here instead of reading from req.body
+  const total = ans.reduce((sum, item) => {
+    const price = Number(item.price);
+    const quan = Number(item.quan);
+    return sum + (isNaN(price) || isNaN(quan) ? 0 : price * quan);
+  }, 0);
 
   try {
     const order = new Order({ orderId, items: ans, total });
@@ -294,8 +301,8 @@ app.post('/order', async (req, res) => {
   }
 });
 
-app.get('/order/:orderid/:total', async (req, res) => {
-  const { orderid, total } = req.params;
+app.get('/order/:orderid', async (req, res) => {
+  const { orderid } = req.params;
   const invoiceName = `invoice-${orderid}.pdf`;
 
   res.setHeader('Content-Type', 'application/pdf');
@@ -318,7 +325,7 @@ app.get('/order/:orderid/:total', async (req, res) => {
     order.items.forEach((item) => {
       doc.text(`${item.title} -> ${item.quan}`);
     });
-    doc.text(`Total amount = ₹${total}`);
+    doc.text(`Total amount = ₹${order.total}`);
     doc.text('Thank you for buying from Bookshop!');
     doc.end();
   } catch (error) {
@@ -327,7 +334,6 @@ app.get('/order/:orderid/:total', async (req, res) => {
     doc.end();
   }
 });
-
 app.post('/delete', async (req, res) => {
   const { id } = req.body;
   try {
